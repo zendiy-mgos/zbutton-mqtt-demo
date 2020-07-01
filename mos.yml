@@ -8,18 +8,16 @@ modules_version: ${mos.version}
 mongoose_os_version: ${mos.version}
 
 config_schema:
-  - ["device.id", "ZT??????"]
+  - ["mqtt.server", "<address_or_name>:<port>"]
+  - ["mqtt.user", "<your_username>"]
+  - ["mqtt.pass", "<your_password>"]
+  
   - ["mqtt.enable", true]
+  - ["mqtt.ssl_ca_cert", "ca.pem"]
   - ["mqtt.keep_alive", 15]
   - ["mqtt.will_topic", "$ha/zthings/${device_id}/availability"]
   - ["mqtt.will_message", "offline"]
   - ["mqtt.will_retain", true]
-
-  #  MQTT settings for my local Mosquito instance (Hassio)
-  - ["mqtt.server", "192.168.1.254:8883"]
-  - ["mqtt.ssl_ca_cert", "ca.pem"]
-  - ["mqtt.user", "gaojing@hotmail.it"]
-  - ["mqtt.pass", "Marika2414"]
 
   - ["app", "o", {title: "App settings"}]
   - ["app.mqtt", "o", {title: "MQTT settings"}]
