@@ -1,0 +1,65 @@
+author: ZenDIY
+description: Mongoose OS demo firmware for using MQTT to drive ZenButtons
+# arch: PLATFORM
+version: 1.0
+manifest_version: 2017-05-18
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+config_schema:
+  - ["device.id", "ZT??????"]
+  - ["mqtt.enable", true]
+  - ["mqtt.keep_alive", 15]
+  - ["mqtt.will_topic", "$ha/zthings/${device_id}/availability"]
+  - ["mqtt.will_message", "offline"]
+  - ["mqtt.will_retain", true]
+
+  #  MQTT settings for my local Mosquito instance (Hassio)
+  - ["mqtt.server", "192.168.1.254:8883"]
+  - ["mqtt.ssl_ca_cert", "ca.pem"]
+  - ["mqtt.user", "gaojing@hotmail.it"]
+  - ["mqtt.pass", "Marika2414"]
+
+  - ["app", "o", {title: "App settings"}]
+  - ["app.mqtt", "o", {title: "MQTT settings"}]
+  - ["app.mqtt.event_topic", "s", "$ha/zthings/${device_id}/${zthing_id}/event", {title: "Event topic"}]
+  
+  - ["app.btn1", "o", {title: "Button #1 settings"}]
+  - ["app.btn1.id", "s", "btn1", {title: "Button ID"}]
+  - ["app.btn1.gpio", "o", {title: "GPIO settings"}]
+  - ["app.btn1.gpio.pin", "i", 14, {title: "Button GPIO pin"}]
+  - ["app.btn1.gpio.active_high", "b", false, {title: "True if input is high (1) when the button is pressed."}]
+     
+# - ["debug.level", 3]
+
+includes:
+  - include
+sources:
+  # NOTE: comment the row below and exclude 'mjs' library
+  # in [libs] section to disable C/C++ demo.
+  #- src
+  # NOTE: remove the comment below and include 'mjs' library
+  # in [libs] section to enable the JS demo.
+  - src_js
+tags:
+  - js
+filesystem:
+  - fs
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+  - origin: https://github.com/mongoose-os-libs/ca-bundle
+  - origin: https://github.com/mongoose-os-libs/provision
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/mqtt
+  - origin: https://github.com/mongoose-os-libs/rpc-common
+  - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-config
+  - origin: https://github.com/mongoose-os-libs/rpc-service-fs
+  - origin: https://github.com/zendiy-mgos/zbutton-gpio
+  - origin: https://github.com/zendiy-mgos/zbutton-mqtt
+
+  # NOTE: remove comment below and use the 'src_js' as sources folder
+  # to enable the JS demo (see ./fs/init.js).
+  - origin: https://github.com/mongoose-os-libs/mjs
