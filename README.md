@@ -1,6 +1,6 @@
 # ZenButton-MQTT Demo 
 ## Overview
-This is a [Mongoose-OS](https://mongoose-os.com/) demo firmware for using MQTT to drive ZenButtons. This firmware uses the native [zbutton-mqtt](https://github.com/zendiy-mgos/zbutton-mqtt) library.
+This is a [Mongoose-OS](https://mongoose-os.com/) demo firmware for using MQTT to drive ZenButtons. This firmware uses the native [zbutton-gpio](https://github.com/zendiy-mgos/zbutton-gpio) and [zbutton-mqtt](https://github.com/zendiy-mgos/zbutton-mqtt) libraries.
 ## GET STARTED
 Build up your device in few minutes just downloading, compiling and flashing this demo.
 
