@@ -1,6 +1,6 @@
 # ZenButton-MQTT Demo 
 ## Overview
-This is a [Mongoose-OS](https://mongoose-os.com/) demo firmware for using MQTT to drive ZenButtons. This firmware uses the native [zbutton-gpio](https://github.com/zendiy-mgos/zbutton-gpio) and [zbutton-mqtt](https://github.com/zendiy-mgos/zbutton-mqtt) libraries.
+This is a [Mongoose-OS](https://mongoose-os.com/) demo firmware for publishing ZenButtons events as MQTT messages. This firmware uses the native [zbutton-gpio](https://github.com/zendiy-mgos/zbutton-gpio) and [zbutton-mqtt](https://github.com/zendiy-mgos/zbutton-mqtt) libraries.
 ## GET STARTED
 Build up your device in few minutes just downloading, compiling and flashing this demo.
 
@@ -29,7 +29,7 @@ $ mos flash --port <port_name>
 ## Hardware
 ### Used components
  - Wemos D1 mini board
- - Push button
+ - Pushbutton
  - 5V DC power supply (via min-USB cable or via external power supply)
 ### Wiring schema
 ![zbutton-mqtt demo wiring schema](docs/zbutton-mqtt-demo-sketch_bb.png)
