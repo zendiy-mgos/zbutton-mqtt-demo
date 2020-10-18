@@ -6,11 +6,13 @@ load("api_zbutton_mqtt.js")
 function onBtnEvent(ev, evdata, ud) {
   let btn = ZenThing.getFromHandle(evdata);
   if (ev === ZenButton.EV_ON_CLICK) {
-    print("Button ", btn.id, " CLICKED");
+    print("Button", btn.id, "CLICKED");
   } else if (ev === ZenButton.EV_ON_DBLCLICK) {
-    print("Button ", btn.id, " DOUBLE-CLICKED");
+    print("Button", btn.id, "DOUBLE-CLICKED");
   } else if (ev === ZenButton.EV_ON_PRESS) {
-    print("Button ", btn.id, " PRESSED ", btn.getPressCounter());
+    print("Button", btn.id, "PRESSED", btn.getPressCounter());
+  } else if (ev === ZenButton.EV_ON_PRESS_END) {
+    print("Button", btn.id, "RELESED after", btn.getPressDuration());
   }
 }
 
@@ -22,9 +24,7 @@ if (btn1) {
   let gpioCfg = {activeHigh: Cfg.get('app.btn1.gpio.active_high')};
   if (btn1.GPIO.attach(Cfg.get('app.btn1.gpio.pin'), gpioCfg)) {
     if (btn1.MQTT.attach(Cfg.get('app.mqtt.event_topic'))) {
-      Event.addHandler(ZenButton.EV_ON_CLICK, onBtnEvent, null);
-      Event.addHandler(ZenButton.EV_ON_DBLCLICK, onBtnEvent, null);
-      Event.addHandler(ZenButton.EV_ON_PRESS, onBtnEvent, null);
+      Event.addGroupHandler(ZenButton.EV_ON_ANY, onBtnEvent, null);
       success = true;
     }
   }
