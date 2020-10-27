@@ -12,11 +12,11 @@ function onBtnEvent(ev, evdata, ud) {
   } else if (ev === ZenButton.EV_ON_PRESS) {
     print("Button", btn.id, "PRESSED", btn.getPressCounter());
   } else if (ev === ZenButton.EV_ON_PRESS_END) {
-    print("Button", btn.id, "RELESED after", btn.getPressDuration());
+    print("Button", btn.id, "RELESED after", btn.getPressDuration(), "(ms)");
   }
 }
 
-/* Create button using defualt confoguration. */   
+/* Create button using defualt configuration. */   
 let btn1 = ZenButton.create(Cfg.get('app.btn1.id'));
 
 let success = false;
