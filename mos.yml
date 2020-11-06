@@ -1,5 +1,5 @@
 author: ZenDIY
-description: Mongoose-OS demo firmware that uses ZenButtons ecosystem for publishing pushbutton events as MQTT messages
+description: Mongoose-OS demo firmware for publishing pushbutton events as MQTT messages.
 # arch: PLATFORM
 version: 1.0
 manifest_version: 2017-05-18
